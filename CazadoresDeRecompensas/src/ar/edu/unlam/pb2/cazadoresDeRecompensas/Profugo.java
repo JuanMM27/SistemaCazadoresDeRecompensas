@@ -3,14 +3,14 @@ package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 public class Profugo {
 
 	private String nombre;
-	private Integer inocencia;
+	private Integer nivelInocencia;
 	private Boolean nervioso;
-	private Integer habilidad;
+	private Integer nivelHabilidad;
 
 	public Profugo(String nombre, Integer inocencia, Integer habilidad, Boolean nervioso) {
 		this.nombre=nombre;
-		this.inocencia=inocencia;
-		this.habilidad=habilidad;
+		this.nivelInocencia=inocencia;
+		this.nivelHabilidad=habilidad;
 		this.nervioso=nervioso;
 	}
 
