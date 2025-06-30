@@ -7,7 +7,7 @@ public class Zona {
 
 	private String nombre;
 	private TipoDeZona tipoDeZona;
-	private HashSet profugos=new HashSet <Profugo>();
+	private HashSet<Profugo> profugos=new HashSet <Profugo>();
 
 	public Zona(String nombre, TipoDeZona tipoDeZona) {
 		this.nombre=nombre;
@@ -25,5 +25,10 @@ public class Zona {
 	public HashSet getProfugos() {
 		return profugos;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+	
 	
 }

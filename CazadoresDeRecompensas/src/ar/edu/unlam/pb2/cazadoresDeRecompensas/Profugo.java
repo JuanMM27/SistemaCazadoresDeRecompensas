@@ -38,5 +38,10 @@ public class Profugo {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Profugo [nombre=" + nombre + "]";
+	}
 	
 }

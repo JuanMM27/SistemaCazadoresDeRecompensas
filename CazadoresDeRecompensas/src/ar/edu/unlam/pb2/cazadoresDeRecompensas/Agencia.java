@@ -9,7 +9,7 @@ import java.util.Set;
 public class Agencia {
 
 	private Set<Cazador> cazadores = new HashSet<Cazador>();
-	private Map <Zona,HashSet> zonas=new HashMap<Zona, HashSet>();
+	private Map<Zona, Set> zonas = new HashMap<Zona, Set>();
 
 	public void agregarCazador(Cazador cazador1) {
 		this.cazadores.add(cazador1);
@@ -22,7 +22,28 @@ public class Agencia {
 
 	public void agregarZona(Zona zona) {
 		this.zonas.put(zona, zona.getProfugos());
-		
+
+	}
+
+	public Integer cantidadDeZonas() {
+		return this.zonas.size();
+	}
+
+	public HashSet <Profugo> profugosPorZona(Zona zona) {
+		HashSet <Profugo> consulta=null;
+		if(zonas.containsKey(zona)) {			
+			consulta= zona.getProfugos();
+		}
+		return consulta;
+	}
+
+	public Zona obtenerZona(String nombre) {
+		for (Map.Entry<Zona, Set> i : this.zonas.entrySet()) {
+			if (i.getKey().getNombre().equals(nombre)) {
+				return i.getKey();
+			}
+		}
+		return null;
 	}
 
 }
