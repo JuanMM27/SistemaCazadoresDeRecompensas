@@ -4,14 +4,30 @@ public class Profugo {
 
 	private String nombre;
 	private Integer nivelInocencia;
-	private Boolean nervioso;
+	private Boolean esNervioso;
 	private Integer nivelHabilidad;
 
-	public Profugo(String nombre, Integer inocencia, Integer habilidad, Boolean nervioso) {
+	public Profugo(String nombre, Integer nivelInocencia, Integer nivelHabilidad, Boolean nervioso) {
+		if(nivelHabilidad < 1 || nivelHabilidad > 100) {
+			throw new NivelesNoPermitidosException("La habilidad debe ser entre 1 y 100.");
+		}
+		if(nivelInocencia < 1) {
+			throw new NivelesNoPermitidosException("El nivel de inocencia no puede ser menor a 1");
+		}
 		this.nombre=nombre;
-		this.nivelInocencia=inocencia;
-		this.nivelHabilidad=habilidad;
-		this.nervioso=nervioso;
+		this.nivelInocencia=nivelInocencia;
+		this.nivelHabilidad=nivelHabilidad;
+		this.esNervioso=nervioso;
+	}
+	
+	public Integer getNivelInocencia() {
+		return this.nivelInocencia;
+	}
+	public Integer getNivelHabilidad() {
+		return this.nivelHabilidad;
+	}
+	public Boolean getEsNervioso() {
+		return this.esNervioso;
 	}
 
 	@Override
@@ -41,7 +57,8 @@ public class Profugo {
 
 	@Override
 	public String toString() {
-		return "Profugo [nombre=" + nombre + "]";
+		return "Profugo [Nombre: " + this.nombre + ", Nivel Inocencia: "+this.nivelInocencia+
+				", Nivel Habilidad: "+this.nivelHabilidad+", Es nervioso: "+this.esNervioso+"]";
 	}
 	
 }
