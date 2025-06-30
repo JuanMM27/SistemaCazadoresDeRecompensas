@@ -29,6 +29,15 @@ public class Zona {
 	public String getNombre() {
 		return nombre;
 	}
+
+	public TipoDeZona getTipoDeZona() {
+		return tipoDeZona;
+	}
+
+	public void removerProfugo(Profugo p) {
+		this.profugos.remove(p);
+		
+	}
 	
 	
 }

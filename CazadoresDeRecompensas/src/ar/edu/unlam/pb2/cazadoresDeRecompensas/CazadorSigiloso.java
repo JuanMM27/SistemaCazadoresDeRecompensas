@@ -12,5 +12,11 @@ public class CazadorSigiloso extends Cazador{
 		//Condicion del cazador sigiloso: Habilidad menor a 50
 		return true;
 	}
+	@Override
+	public Boolean asignarZona(Zona zona) {		
+			this.zona=zona;
+			return true;
+	}
+		
 
 }

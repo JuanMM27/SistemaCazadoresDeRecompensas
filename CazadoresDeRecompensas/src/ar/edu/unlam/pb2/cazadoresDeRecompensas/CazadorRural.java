@@ -12,4 +12,12 @@ public class CazadorRural extends Cazador{
 		//Condicion del cazador rural: El profugo debe ser nervioso
 		return true;
 	}
+	@Override
+	public Boolean asignarZona(Zona zona) {
+		if(zona.getTipoDeZona()==TipoDeZona.RURAL) {
+			this.zona=zona;
+			return true;
+		}
+		return false;
+	}
 }

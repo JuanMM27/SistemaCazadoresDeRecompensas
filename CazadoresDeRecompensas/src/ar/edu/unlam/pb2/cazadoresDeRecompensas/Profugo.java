@@ -29,6 +29,16 @@ public class Profugo {
 	public Boolean getEsNervioso() {
 		return this.esNervioso;
 	}
+	
+
+	public void setEsNervioso(Boolean esNervioso) {
+		this.esNervioso = esNervioso;
+	}
+	
+
+	public void setNivelHabilidad(Integer nivelHabilidad) {
+		this.nivelHabilidad = nivelHabilidad;
+	}
 
 	@Override
 	public int hashCode() {
