@@ -29,10 +29,10 @@ public class Agencia {
 		return this.zonas.size();
 	}
 
-	public HashSet <Profugo> profugosPorZona(Zona zona) {
-		HashSet <Profugo> consulta=null;
-		if(zonas.containsKey(zona)) {			
-			consulta= zona.getProfugos();
+	public HashSet<Profugo> profugosPorZona(Zona zona) {
+		HashSet<Profugo> consulta = null;
+		if (zonas.containsKey(zona)) {
+			consulta = zona.getProfugos();
 		}
 		return consulta;
 	}
@@ -43,7 +43,18 @@ public class Agencia {
 				return i.getKey();
 			}
 		}
-		return null;
+		throw new ObjetoNoEncontradoException("No existe el objeto");
+
 	}
+/*
+	public Boolean analisisDeZona(Zona zona) {
+		HashSet<Profugo> profugos = zona.getProfugos();
+		Integer habilidadTotal = 0;
+		for (Profugo profugo : profugos) {
+			habilidadTotal += profugo.getNivelHabilidad();
+		}
+		habilidadTotal = habilidadTotal / profugos.size();
+		return habilidadTotal > 50;
+	}*/
 
 }

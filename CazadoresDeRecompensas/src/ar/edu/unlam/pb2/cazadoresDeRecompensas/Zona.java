@@ -7,17 +7,18 @@ public class Zona {
 
 	private String nombre;
 	private TipoDeZona tipoDeZona;
-	private HashSet<Profugo> profugos=new HashSet <Profugo>();
+	private HashSet<Profugo> profugos = new HashSet<Profugo>();
 
 	public Zona(String nombre, TipoDeZona tipoDeZona) {
-		this.nombre=nombre;
-		this.tipoDeZona=tipoDeZona;
+		this.nombre = nombre;
+		this.tipoDeZona = tipoDeZona;
 	}
 
 	public Boolean agregarProfugo(Profugo profugo1) {
 		return profugos.add(profugo1);
-		
+
 	}
+
 	public Integer cantidadDeProfugos() {
 		return profugos.size();
 	}
@@ -36,13 +37,15 @@ public class Zona {
 
 	public void removerProfugo(Profugo p) {
 		this.profugos.remove(p);
-		
+
 	}
 
 	public Profugo buscarProfugo(Profugo p1) {
-		this.profugos.contains(p1);
-		return p1;
+		if(this.profugos.contains(p1)){
+			return p1;
+		}else
+			throw new ObjetoNoEncontradoException("No existe el objeto");
+		
 	}
-	
-	
+
 }

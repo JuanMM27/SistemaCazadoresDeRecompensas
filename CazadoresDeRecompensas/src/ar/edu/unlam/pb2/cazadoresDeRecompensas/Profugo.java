@@ -42,7 +42,7 @@ public class Profugo {
 	public void habilidadIntimada(Integer descuento) {
 		this.nivelHabilidad-=descuento;
 		
-	}
+	}	
 
 	@Override
 	public int hashCode() {
