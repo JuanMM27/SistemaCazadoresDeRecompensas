@@ -15,7 +15,7 @@ public class CazadorRural extends Cazador{
 			this.zona.removerProfugo(p);
 			return true;
 		} else {
-			p.setNivelHabilidad(-2);
+			p.inocenciaIntimada(2);
 			p.setEsNervioso(true);
 			return false;
 		}

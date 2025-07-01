@@ -46,8 +46,17 @@ public class Profugo {
 	}
 
 	public void habilidadIntimada(Integer descuento) {
-
+		if(this.nivelHabilidad<descuento) {
+			this.nivelHabilidad=0;
+		}else
 		this.nivelHabilidad-=descuento;
+		
+	}
+	public void inocenciaIntimada(Integer descuento) {
+		if(this.nivelInocencia<descuento) {
+			this.nivelInocencia=0;
+		}else
+		this.nivelInocencia-=descuento;
 		
 	}
 	@Override

@@ -16,7 +16,7 @@ public class CazadorUrbano extends Cazador {
 			this.zona.removerProfugo(p);
 			return true;
 		} else {
-			p.habilidadIntimada(2);
+			p.inocenciaIntimada(2);
 			p.setEsNervioso(false);
 			return false;
 		}

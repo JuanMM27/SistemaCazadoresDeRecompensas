@@ -30,6 +30,16 @@ public class CazadoresTest {
 		zona.agregarProfugo(p1);
 		assertTrue(cazador.intentarCaptura(p1));
 	}
+	@Test
+	public void crearUnCazadorSigilosoQueIntentaCapturarUnProfugoEnUnaZonaYSiNoLoCapturaLosIntimida() {
+		Profugo p1 = new Profugo("Pablo", 50, 60, false);
+		CazadorSigiloso cazador = new CazadorSigiloso("Juanjo", 40);
+		Zona zona = new Zona("Chascomus", TipoDeZona.RURAL);
+		cazador.asignarZona(zona);
+		zona.agregarProfugo(p1);
+		cazador.intentarCaptura(p1);
+		assertEquals(Integer.valueOf(55),p1.getNivelHabilidad());
+	}
 	
 	@Test
 	public void crearUnCazadorRuralQueIntentaCapturarUnProfugoNoNervioso() {
@@ -66,6 +76,18 @@ public class CazadoresTest {
 	public void queElProfugoSeanIntimidados() {
 		Profugo p1 = new Profugo("Pablo", 10, 10, true);
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Jose", 40);
+		Zona zona = new Zona("San justo", TipoDeZona.URBANO);
+		zona.agregarProfugo(p1);
+		cazadorUrbano.asignarZona(zona);
+		Profugo profugo=zona.buscarProfugo(p1);		
+		cazadorUrbano.intentarCaptura(p1);	
+		assertFalse(profugo.getEsNervioso());
+		assertEquals(Integer.valueOf(8),profugo.getNivelInocencia());
+	}
+	@Test(expected = ObjetoNoEncontradoException.class)
+	public void queElProfugoBuscadoSeaNuloYLanceUnaExcepcion() {
+		Profugo p1 = new Profugo("Pablo", 10, 10, true);
+		CazadorUrbano cazadorUrbano = new CazadorUrbano("Jose", 40);
 		Zona zona = new Zona("San justo", TipoDeZona.URBANO);		
 		cazadorUrbano.asignarZona(zona);
 		Profugo profugo=zona.buscarProfugo(p1);		
@@ -73,6 +95,19 @@ public class CazadoresTest {
 		assertFalse(profugo.getEsNervioso());
 		assertEquals(Integer.valueOf(8),profugo.getNivelHabilidad());
 	}
+	@Test
+	public void queElProfugoSeanIntimidadosYQueLaIntimaionNoDejeSuHabilidadMenorACero() {
+		Profugo p1 = new Profugo("Pablo", 1, 1, true);
+		CazadorUrbano cazadorUrbano = new CazadorUrbano("Jose", 40);
+		Zona zona = new Zona("San justo", TipoDeZona.URBANO);
+		zona.agregarProfugo(p1);
+		cazadorUrbano.asignarZona(zona);
+		Profugo profugo=zona.buscarProfugo(p1);		
+		cazadorUrbano.intentarCaptura(p1);	
+		assertFalse(profugo.getEsNervioso());
+		assertEquals(Integer.valueOf(0),profugo.getNivelInocencia());
+	}
+	
 	
 	private void agregarProfugosALaZona(Zona zona) {
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);

@@ -16,7 +16,7 @@ public class CazadorSigiloso extends Cazador {
 			this.zona.removerProfugo(p);
 			return true;
 		} else {
-			p.setNivelHabilidad(-5);
+			p.habilidadIntimada(5);
 			return false;
 		}
 	}

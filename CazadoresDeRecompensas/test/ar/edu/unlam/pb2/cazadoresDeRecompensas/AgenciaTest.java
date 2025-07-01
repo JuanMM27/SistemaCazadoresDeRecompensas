@@ -33,13 +33,7 @@ public class AgenciaTest {
 		
 
 	}
-/*Test
-	public void queSePuedaConsultarElPromedioDeLaZonaParaAsignarUnCazadorSigiloso() {
-		Zona zona1 = new Zona("San justo", TipoDeZona.URBANO);
-		agregarProfugosALaZona(zona1);
-		assertTrue(cazadoresDeReconpenza.analisisDeZona(zona1));
-		}
-*/
+
 	private HashSet<Profugo> arrayDeProfugosParaprueba() {
 		HashSet <Profugo> esperado=new HashSet <Profugo>();
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);

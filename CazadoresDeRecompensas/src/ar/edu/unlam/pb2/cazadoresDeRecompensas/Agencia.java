@@ -46,15 +46,6 @@ public class Agencia {
 		throw new ObjetoNoEncontradoException("No existe el objeto");
 
 	}
-/*
-	public Boolean analisisDeZona(Zona zona) {
-		HashSet<Profugo> profugos = zona.getProfugos();
-		Integer habilidadTotal = 0;
-		for (Profugo profugo : profugos) {
-			habilidadTotal += profugo.getNivelHabilidad();
-		}
-		habilidadTotal = habilidadTotal / profugos.size();
-		return habilidadTotal > 50;
-	}*/
+
 
 }

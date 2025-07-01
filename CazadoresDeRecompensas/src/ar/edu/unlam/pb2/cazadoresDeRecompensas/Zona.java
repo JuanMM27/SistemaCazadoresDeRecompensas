@@ -36,16 +36,19 @@ public class Zona {
 	}
 
 	public void removerProfugo(Profugo p) {
-		this.profugos.remove(p);
+		if(this.profugos.contains(p)) {
+			this.profugos.remove(p);
+		}else
+		 throw new ObjetoNoEncontradoException("El profugo ya fue capturado o no se encuentra en la zona");
+		
 
 	}
 
 	public Profugo buscarProfugo(Profugo p1) {
-		if(this.profugos.contains(p1)){
+		if (this.profugos.contains(p1)) {
 			return p1;
 		}else
-			throw new ObjetoNoEncontradoException("No existe el objeto");
-		
+		throw new ObjetoNoEncontradoException("No existe el profugo");
 	}
 
 }
