@@ -39,6 +39,10 @@ public class Profugo {
 	public void setNivelHabilidad(Integer nivelHabilidad) {
 		this.nivelHabilidad = nivelHabilidad;
 	}
+	public void habilidadIntimada(Integer descuento) {
+		this.nivelHabilidad-=descuento;
+		
+	}
 
 	@Override
 	public int hashCode() {
@@ -70,5 +74,7 @@ public class Profugo {
 		return "Profugo [Nombre: " + this.nombre + ", Nivel Inocencia: "+this.nivelInocencia+
 				", Nivel Habilidad: "+this.nivelHabilidad+", Es nervioso: "+this.esNervioso+"]";
 	}
+
+
 	
 }

@@ -14,13 +14,14 @@ public class CazadorUrbano extends Cazador {
 		if (this.experiencia > p.getNivelInocencia() && p.getEsNervioso() == false) {
 			this.capturados.add(p);
 			this.zona.removerProfugo(p);
-		} else if (this.experiencia < p.getNivelInocencia() && p.getEsNervioso() == true) {
-			p.setNivelHabilidad(-2);
+			return true;
+		} else {
+			p.habilidadIntimada(2);
 			p.setEsNervioso(false);
+			return false;
 		}
-		return true;
-	}
 
+	}
 	@Override
 	public Boolean asignarZona(Zona zona) {
 		if (zona.getTipoDeZona() == TipoDeZona.URBANO) {

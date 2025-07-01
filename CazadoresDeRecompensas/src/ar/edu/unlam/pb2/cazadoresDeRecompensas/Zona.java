@@ -38,6 +38,11 @@ public class Zona {
 		this.profugos.remove(p);
 		
 	}
+
+	public Profugo buscarProfugo(Profugo p1) {
+		this.profugos.contains(p1);
+		return p1;
+	}
 	
 	
 }

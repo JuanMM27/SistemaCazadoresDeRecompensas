@@ -10,7 +10,17 @@ public class CazadorRural extends Cazador{
 	public Boolean intentarCaptura(Profugo p) {
 		//Condicion 1 el nivel de experiencia del cazadpr debe ser mayor a la inocencia del profugo
 		//Condicion del cazador rural: El profugo debe ser nervioso
-		return true;
+		if (this.experiencia > p.getNivelInocencia() && p.getEsNervioso() == true) {
+			this.capturados.add(p);
+			this.zona.removerProfugo(p);
+			return true;
+		} else {
+			p.setNivelHabilidad(-2);
+			p.setEsNervioso(true);
+			return false;
+		}
+
+	
 	}
 	@Override
 	public Boolean asignarZona(Zona zona) {
