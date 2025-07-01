@@ -12,7 +12,7 @@ public class AgenciaTest {
 
 	@Test
 	public void queSePuedaCrearUnaAgenciaYSePuedanAgregarCazadores() {
-		//agregarCazadoresALaZona();
+		agregarCazadoresALaZona();
 		assertEquals(Integer.valueOf(6), cazadoresDeReconpenza.cantidadDeCazadores());
 	}
 
@@ -68,21 +68,21 @@ public class AgenciaTest {
 		esperado.add(profugo12);
 		return esperado;
 	}
-	/*
+	
 	private void agregarCazadoresALaZona() {
-		Cazador cazador1 = new CazadorUrbano("Carlos");
-		Cazador cazador2 = new CazadorUrbano("Hector");
-		Cazador cazador3 = new CazadorRural("Diego");
-		Cazador cazador4 = new CazadorRural("Leonel");
-		Cazador cazador5 = new CazadorSigiloso("Rodri");
-		Cazador cazador6 = new CazadorSigiloso("Ronaldo");
+		Cazador cazador1 = new CazadorUrbano("Carlos", 60);
+		Cazador cazador2 = new CazadorUrbano("Hector", 40);
+		Cazador cazador3 = new CazadorRural("Diego", 20);
+		Cazador cazador4 = new CazadorRural("Leonel", 15);
+		Cazador cazador5 = new CazadorSigiloso("Rodri", 80);
+		Cazador cazador6 = new CazadorSigiloso("Ronaldo", 90);
 		Cazador[] cazadores = { cazador1, cazador2, cazador3, cazador4, cazador5, cazador6 };
 		for (Cazador i : cazadores) {
 			cazadoresDeReconpenza.agregarCazador(i);
 		}
 
 	}
-	*/
+	
 	private void agregarProfugosALaZona(Zona zona) {
 		Profugo profugo1 = new Profugo("Pablo", 10, 60, true);
 		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);

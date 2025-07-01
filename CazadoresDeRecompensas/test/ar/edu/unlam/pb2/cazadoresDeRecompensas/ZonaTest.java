@@ -8,7 +8,8 @@ public class ZonaTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		Zona zona = new Zona("Lanus", TipoDeZona.URBANO);
+		assertNotNull(zona);
 	}
 
 }
