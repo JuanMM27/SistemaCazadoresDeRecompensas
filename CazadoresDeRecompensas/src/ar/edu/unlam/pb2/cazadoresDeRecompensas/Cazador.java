@@ -22,6 +22,7 @@ public abstract class Cazador {
 
 	public abstract Boolean intentarCaptura(Profugo p);// Crea la clase abstracta intentar captura, para ser
 														// sobreescrita en cada cazador
+	public abstract void intentarCapturaEnZonaAsignada(Zona zona);
 
 	public abstract Boolean asignarZona(Zona zona);
 		

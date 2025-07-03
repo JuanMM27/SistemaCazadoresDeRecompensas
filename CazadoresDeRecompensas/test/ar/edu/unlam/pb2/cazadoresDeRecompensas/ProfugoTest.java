@@ -9,10 +9,12 @@ public class ProfugoTest {
 	@Test(expected = NivelesNoPermitidosException.class)
 	public void noSePuedeCrearElProfugoConNivelInocenciaMenorA1() {
 		Profugo p1 = new Profugo("Matias",-2, 60, true);
+		assertNull(p1);
 	}
 	@Test(expected = NivelesNoPermitidosException.class)
 	public void noSePuedeCrearElProfugoPorNivelHabilidadMayorA100() {
 		Profugo p1 = new Profugo("Matias",20, 120, true);
+		assertNull(p1);
 	}
 	@Test
 	public void seCreaUnProfugo() {

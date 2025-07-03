@@ -7,18 +7,18 @@ import org.junit.Test;
 public class ZonaTest {
 
 	@Test
-	public void QueSePuedacrearUnaZona() {
+	public void queSePuedacrearUnaZona() {
 		Zona zona = new Zona("Lanus");
 		assertNotNull(zona);
 	}
 	@Test
-	public void QueSePuedacrearUnaZonaYAgregarProfugos() {
+	public void queSePuedacrearUnaZonaYAgregarProfugos() {
 		Zona zona = new Zona("Lanus");
 		agregarProfugosALaZona(zona);
 		assertEquals(Integer.valueOf(12),zona.cantidadDeProfugos());
 	}
 	@Test
-	public void QueSePuedaRemoverProfugosDeLaZona() {
+	public void queSePuedaRemoverProfugosDeLaZona() {
 		Zona zona = new Zona("Lanus");
 		agregarProfugosALaZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
@@ -28,11 +28,10 @@ public class ZonaTest {
 		assertEquals(Integer.valueOf(10),zona.cantidadDeProfugos());
 	}
 	@Test(expected = ObjetoNoEncontradoException.class)
-	public void QueSePuedaRemoverProfugosQueNoEstenEnLaZonaORemoverDosVeces() {
+	public void queNoSePuedaRemoverUnProfugoDosVeces() {
 		Zona zona = new Zona("Lanus");
 		agregarProfugosALaZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
-		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
 		zona.removerProfugo(profugo1);
 		zona.removerProfugo(profugo1);
 		assertEquals(Integer.valueOf(10),zona.cantidadDeProfugos());

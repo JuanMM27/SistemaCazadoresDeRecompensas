@@ -1,5 +1,7 @@
 package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 
+import java.util.HashSet;
+
 public class CazadorSigiloso extends Cazador {
 
 	public CazadorSigiloso(String nombre, Integer experiencia) {
@@ -30,4 +32,12 @@ public class CazadorSigiloso extends Cazador {
 		return false;
 		
 	}
+	@Override
+	public void intentarCapturaEnZonaAsignada(Zona zona) {
+		HashSet<Profugo> profugoEnLaZona=new HashSet<Profugo>(zona.getProfugos());
+		for (Profugo p : profugoEnLaZona) {
+			intentarCaptura(p);
+		}
+	}
+	
 }

@@ -1,7 +1,6 @@
 package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class Zona {
 
@@ -15,7 +14,6 @@ public class Zona {
 
 	public Boolean agregarProfugo(Profugo profugo1) {
 		return profugos.add(profugo1);
-
 	}
 
 	public Integer cantidadDeProfugos() {
@@ -33,9 +31,9 @@ public class Zona {
 	public void removerProfugo(Profugo p) {
 		if (this.profugos.contains(p)) {
 			this.profugos.remove(p);
-		} else
+		} else {
 			throw new ObjetoNoEncontradoException("El profugo ya fue capturado o no se encuentra en la zona");
-
+		}
 	}
 
 	public Profugo buscarProfugo(Profugo p1) {

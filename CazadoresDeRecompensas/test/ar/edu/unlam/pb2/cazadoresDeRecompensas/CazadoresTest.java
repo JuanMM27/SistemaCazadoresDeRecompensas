@@ -2,7 +2,6 @@ package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 
 import static org.junit.Assert.*;
 
-import java.util.HashSet;
 
 import org.junit.Test;
 
@@ -83,6 +82,7 @@ public class CazadoresTest {
 		assertEquals(Integer.valueOf(1), cazadorUrbano.cantidadDeProfugosCapturados());
 	}
 
+	
 	@Test
 	public void queElProfugoSeaRemovidoDeLaZona() {
 		Profugo p1 = new Profugo("Pablo", 10, 10, false);
