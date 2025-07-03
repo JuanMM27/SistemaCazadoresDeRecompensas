@@ -1,5 +1,8 @@
 package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CazadorRural extends Cazador{
 
 	public CazadorRural(String nombre, Integer experiencia) {
@@ -24,10 +27,25 @@ public class CazadorRural extends Cazador{
 	}
 	@Override
 	public Boolean asignarZona(Zona zona) {
-		if(zona.getTipoDeZona()==TipoDeZona.RURAL) {
+		if(!zona.getProfugos().isEmpty()) {
 			this.zona=zona;
 			return true;
-		}
+		}		
 		return false;
+	}
+
+	public void intentarCapturaEnZonaAsignada(Zona zona) {
+		HashSet<Profugo> profugoEnLaZona=new HashSet<Profugo>(zona.getProfugos());
+		for (Profugo p : profugoEnLaZona) {
+			if (this.experiencia > p.getNivelInocencia() && p.getEsNervioso() == true) {
+				this.capturados.add(p);
+				this.zona.removerProfugo(p);				
+			} else {
+				p.inocenciaIntimada(2);
+				p.setEsNervioso(true);
+				
+			}
+		}
+		
 	}
 }

@@ -24,11 +24,10 @@ public class CazadorUrbano extends Cazador {
 	}
 	@Override
 	public Boolean asignarZona(Zona zona) {
-		if (zona.getTipoDeZona() == TipoDeZona.URBANO) {
-			this.zona = zona;
+		if(!zona.getProfugos().isEmpty()) {
+			this.zona=zona;
 			return true;
 		}
 		return false;
 	}
-
 }

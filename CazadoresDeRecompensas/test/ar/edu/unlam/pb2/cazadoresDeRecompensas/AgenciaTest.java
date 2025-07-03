@@ -99,23 +99,23 @@ public class AgenciaTest {
 	}
 	
 	private void agregarZonasALaAgencia() {
-		Zona zona1 = new Zona("San justo", TipoDeZona.URBANO);
+		Zona zona1 = new Zona("San justo");
 		agregarProfugosALaZona(zona1);
-		Zona zona2 = new Zona("Lomas", TipoDeZona.URBANO);
+		Zona zona2 = new Zona("Lomas");
 		agregarProfugosALaZona(zona2);
-		Zona zona3 = new Zona("Capital", TipoDeZona.URBANO);
+		Zona zona3 = new Zona("Capital");
 		agregarProfugosALaZona(zona3);
-		Zona zona4 = new Zona("San isidro", TipoDeZona.URBANO);
+		Zona zona4 = new Zona("San isidro");
 		agregarProfugosALaZona(zona4);
-		Zona zona5 = new Zona("El talar", TipoDeZona.URBANO);
+		Zona zona5 = new Zona("El talar");
 		agregarProfugosALaZona(zona5);
-		Zona zona6 = new Zona("Chascomus", TipoDeZona.RURAL);
+		Zona zona6 = new Zona("Chascomus");
 		agregarProfugosALaZona(zona6);
-		Zona zona7 = new Zona("Dolores", TipoDeZona.RURAL);
+		Zona zona7 = new Zona("Dolores");
 		agregarProfugosALaZona(zona7);
-		Zona zona8 = new Zona("Ensenada", TipoDeZona.RURAL);
+		Zona zona8 = new Zona("Ensenada");
 		agregarProfugosALaZona(zona8);
-		Zona zona9 = new Zona("San pedro", TipoDeZona.RURAL);
+		Zona zona9 = new Zona("San pedro");
 		agregarProfugosALaZona(zona9);
 		Zona [] zonas= {zona1, zona2, zona3, zona4, zona5, zona6, zona7, zona8, zona9};
 		for(Zona i:zonas) {

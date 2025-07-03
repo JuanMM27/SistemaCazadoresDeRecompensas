@@ -23,8 +23,11 @@ public class CazadorSigiloso extends Cazador {
 
 	@Override
 	public Boolean asignarZona(Zona zona) {
-		this.zona = zona;
-		return true;
+		if(!zona.getProfugos().isEmpty()) {
+			this.zona=zona;
+			return true;
+		}
+		return false;
+		
 	}
-
 }

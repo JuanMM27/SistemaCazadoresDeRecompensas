@@ -8,18 +8,18 @@ public class ZonaTest {
 
 	@Test
 	public void QueSePuedacrearUnaZona() {
-		Zona zona = new Zona("Lanus", TipoDeZona.URBANO);
+		Zona zona = new Zona("Lanus");
 		assertNotNull(zona);
 	}
 	@Test
 	public void QueSePuedacrearUnaZonaYAgregarProfugos() {
-		Zona zona = new Zona("Lanus", TipoDeZona.URBANO);
+		Zona zona = new Zona("Lanus");
 		agregarProfugosALaZona(zona);
 		assertEquals(Integer.valueOf(12),zona.cantidadDeProfugos());
 	}
 	@Test
 	public void QueSePuedaRemoverProfugosDeLaZona() {
-		Zona zona = new Zona("Lanus", TipoDeZona.URBANO);
+		Zona zona = new Zona("Lanus");
 		agregarProfugosALaZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
 		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
@@ -29,7 +29,7 @@ public class ZonaTest {
 	}
 	@Test(expected = ObjetoNoEncontradoException.class)
 	public void QueSePuedaRemoverProfugosQueNoEstenEnLaZonaORemoverDosVeces() {
-		Zona zona = new Zona("Lanus", TipoDeZona.URBANO);
+		Zona zona = new Zona("Lanus");
 		agregarProfugosALaZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
 		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);

@@ -6,12 +6,11 @@ import java.util.Set;
 public class Zona {
 
 	private String nombre;
-	private TipoDeZona tipoDeZona;
 	private HashSet<Profugo> profugos = new HashSet<Profugo>();
 
-	public Zona(String nombre, TipoDeZona tipoDeZona) {
+	public Zona(String nombre) {
 		this.nombre = nombre;
-		this.tipoDeZona = tipoDeZona;
+
 	}
 
 	public Boolean agregarProfugo(Profugo profugo1) {
@@ -23,7 +22,7 @@ public class Zona {
 		return profugos.size();
 	}
 
-	public HashSet getProfugos() {
+	public HashSet<Profugo> getProfugos() {
 		return profugos;
 	}
 
@@ -31,24 +30,19 @@ public class Zona {
 		return nombre;
 	}
 
-	public TipoDeZona getTipoDeZona() {
-		return tipoDeZona;
-	}
-
 	public void removerProfugo(Profugo p) {
-		if(this.profugos.contains(p)) {
+		if (this.profugos.contains(p)) {
 			this.profugos.remove(p);
-		}else
-		 throw new ObjetoNoEncontradoException("El profugo ya fue capturado o no se encuentra en la zona");
-		
+		} else
+			throw new ObjetoNoEncontradoException("El profugo ya fue capturado o no se encuentra en la zona");
 
 	}
 
 	public Profugo buscarProfugo(Profugo p1) {
 		if (this.profugos.contains(p1)) {
 			return p1;
-		}else
-		throw new ObjetoNoEncontradoException("No existe el profugo");
+		} else
+			throw new ObjetoNoEncontradoException("No existe el profugo");
 	}
 
 }
