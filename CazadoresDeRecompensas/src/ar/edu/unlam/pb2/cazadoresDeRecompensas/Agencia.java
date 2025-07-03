@@ -8,7 +8,7 @@ import java.util.Set;
 public class Agencia {
 
 	private Set<Cazador> cazadores = new HashSet<Cazador>();
-	private Map<Zona, Set> zonas = new HashMap<Zona, Set>();
+	private Map<Zona, Set<Profugo>> zonas = new HashMap<Zona, Set<Profugo>>();
 
 	public void agregarCazador(Cazador cazador1) {
 		this.cazadores.add(cazador1);
@@ -37,7 +37,7 @@ public class Agencia {
 	}
 
 	public Zona obtenerZona(String nombre) {
-		for (Map.Entry<Zona, Set> i : this.zonas.entrySet()) {
+		for (Map.Entry<Zona, Set<Profugo>> i : this.zonas.entrySet()) {
 			if (i.getKey().getNombre().equals(nombre)) {
 				return i.getKey();
 			}
