@@ -18,7 +18,11 @@ public abstract class Cazador {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
+	}
+
+	public Zona getZona() {
+		return zona;
 	}
 
 	public abstract Boolean intentarCaptura(Profugo p);// Crea la clase abstracta intentar captura, para ser
@@ -38,4 +42,17 @@ public abstract class Cazador {
 	           " | Capturas: " + this.capturados.size();
 	}
 
+	@Override
+	public int hashCode() {
+	    return nombre.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
+
+	    Cazador other = (Cazador) obj;
+	    return this.nombre.equals(other.nombre);
+	}
 }

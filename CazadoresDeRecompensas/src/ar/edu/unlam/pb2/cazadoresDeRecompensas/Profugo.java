@@ -26,6 +26,10 @@ public class Profugo {
 		return this.nivelInocencia;
 	}
 
+	public String getNombre() {
+		return this.nombre;
+	}
+	
 	public Integer getNivelHabilidad() {
 		return this.nivelHabilidad;
 	}
@@ -118,5 +122,7 @@ public class Profugo {
 		}
 		this.nivelInocencia = nueva;
 	}
+
+	
 
 }
