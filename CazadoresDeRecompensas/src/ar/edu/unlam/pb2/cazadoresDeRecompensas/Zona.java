@@ -24,6 +24,7 @@ public class Zona {
 		return profugos;
 	}
 
+
 	public String getNombre() {
 		return nombre;
 	}

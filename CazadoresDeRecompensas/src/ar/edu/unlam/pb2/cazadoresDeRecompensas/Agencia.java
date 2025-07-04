@@ -1,5 +1,5 @@
-
 package ar.edu.unlam.pb2.cazadoresDeRecompensas;
+
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -82,5 +82,4 @@ public class Agencia {
 	        }
 	    }
 	    return masHabil;
-	}
-}
+  }

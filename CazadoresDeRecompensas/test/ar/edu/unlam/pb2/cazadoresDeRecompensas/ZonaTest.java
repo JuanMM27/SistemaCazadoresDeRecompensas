@@ -2,24 +2,54 @@ package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 
 import static org.junit.Assert.*;
 
+import java.util.HashSet;
+
 import org.junit.Test;
 
 public class ZonaTest {
-
+	
+	private Zona zona = new Zona("Lanus");
+	
 	@Test
-	public void queSePuedacrearUnaZona() {
-		Zona zona = new Zona("Lanus");
+	public void queSePuedacrearUnaZona() {		
 		assertNotNull(zona);
 	}
 	@Test
-	public void queSePuedacrearUnaZonaYAgregarProfugos() {
-		Zona zona = new Zona("Lanus");
+	public void queSePuedacrearUnaZonaYSaberSuNombre() {		
+		assertEquals(zona.getNombre(),"Lanus");
+	}
+	@Test
+	public void queSePuedacrearUnaZonaYSQueDevuelvaLaListaDeProfugos() {		
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
+		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
+		zona.agregarProfugo(profugo1);
+		zona.agregarProfugo(profugo2);
+		HashSet<Profugo> esperado=new HashSet<Profugo>();
+		esperado.add(profugo1);
+		esperado.add(profugo2);
+		HashSet<Profugo> obtenido=zona.getProfugos();
+		assertEquals(obtenido,esperado);
+	}
+	@Test
+	public void queSePuedacrearUnaZonaYAgregarProfugos() {		
 		agregarProfugosALaZona(zona);
 		assertEquals(Integer.valueOf(12),zona.cantidadDeProfugos());
 	}
 	@Test
-	public void queSePuedaRemoverProfugosDeLaZona() {
-		Zona zona = new Zona("Lanus");
+	public void queSePuedaBuscarProfugos() {		
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);		
+		zona.agregarProfugo(profugo1);
+		assertEquals(profugo1, zona.buscarProfugo(profugo1));
+		
+	}
+	@Test(expected = ObjetoNoEncontradoException.class)
+	public void queancaUnaExcepcionSiElProfugoNoEstaEnaLaZona() {		
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);		
+		assertEquals(profugo1, zona.buscarProfugo(profugo1));
+		
+	}
+	@Test
+	public void queSePuedaRemoverProfugosDeLaZona() {		
 		agregarProfugosALaZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
 		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
@@ -28,8 +58,7 @@ public class ZonaTest {
 		assertEquals(Integer.valueOf(10),zona.cantidadDeProfugos());
 	}
 	@Test(expected = ObjetoNoEncontradoException.class)
-	public void queNoSePuedaRemoverUnProfugoDosVeces() {
-		Zona zona = new Zona("Lanus");
+	public void queNoSePuedaRemoverUnProfugoDosVeces() {		
 		agregarProfugosALaZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
 		zona.removerProfugo(profugo1);

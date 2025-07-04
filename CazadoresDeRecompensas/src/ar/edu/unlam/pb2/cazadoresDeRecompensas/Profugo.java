@@ -90,8 +90,7 @@ public class Profugo {
 
 	@Override
 	public String toString() {
-		return "Profugo: Nombre: " + this.nombre + ", Nivel Inocencia: " + this.nivelInocencia + ", Nivel Habilidad: "
-				+ this.nivelHabilidad + ", Es nervioso: " + this.esNervioso;
+		return "Profugo [nombre=" + nombre + "]";
 	}
 
 	public void entrenarArtesMarciales() {
