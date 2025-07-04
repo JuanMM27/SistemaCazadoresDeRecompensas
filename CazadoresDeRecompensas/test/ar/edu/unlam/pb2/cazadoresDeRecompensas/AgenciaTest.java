@@ -74,14 +74,12 @@ public class AgenciaTest {
 	    cazadoresDeRecompensas.agregarCazador(cazador2);
 	    cazadoresDeRecompensas.agregarCazador(cazador3);
 
-	    // ✅ Captura SOLO UNA VEZ
+
 	    Map<Cazador, Set<Profugo>> capturas = cazadoresDeRecompensas.obtenerCapturasDeLosCazadores();
 
-	    // ✅ Pasar el mapa al método
 	    Cazador mejorCazador = cazadoresDeRecompensas.getCazadorConMasCapturas();
 	    Profugo masHabil = cazadoresDeRecompensas.getProfugoMasHabilCapturado();
 
-	    System.out.println("---- VERIFICACIÓN DEL MAPA DE CAPTURAS ----");
 	    for (Map.Entry<Cazador, Set<Profugo>> entry : capturas.entrySet()) {
 	        System.out.println("Cazador: " + entry.getKey().getNombre());
 	        for (Profugo p : entry.getValue()) {
@@ -89,8 +87,8 @@ public class AgenciaTest {
 	        }
 	    }
 
-	    System.out.println("✅ Cazador con más capturas: " + mejorCazador.getNombre() + " (" + capturas.get(mejorCazador).size() + " capturas)");
-	    System.out.println("🎯 Prófugo más hábil capturado: " + masHabil.getNombre() + " (habilidad: " + masHabil.getNivelHabilidad() + ")");
+	    System.out.println(" Cazador con más capturas: " + mejorCazador.getNombre() + " (" + capturas.get(mejorCazador).size() + " capturas)");
+	    System.out.println(" Prófugo más hábil capturado: " + masHabil.getNombre() + " (habilidad: " + masHabil.getNivelHabilidad() + ")");
 	}
 	
 	private void agregarProfugosALaZona(Zona zona) {

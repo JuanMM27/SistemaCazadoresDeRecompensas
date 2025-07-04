@@ -37,11 +37,27 @@ public class CazadorSigiloso extends Cazador {
 	public Set<Profugo> intentarCapturaEnZonaAsignada(Zona zona) {
 		Set <Profugo> profugosCapturados = new HashSet<>();
 		HashSet<Profugo> profugoEnLaZona=new HashSet<Profugo>(zona.getProfugos());
+		Integer habilidadMinimaProfugo = Integer.MAX_VALUE;//Lo inicializamos con el valor mas grande para que entre al if una vez aunque sea
+		Boolean huboIntimidados = false;
+		
 		for (Profugo p : profugoEnLaZona) {
 			if(intentarCaptura(p)) {
 				profugosCapturados.add(p);
+			}else {
+				huboIntimidados = true;
+				if(p.getNivelHabilidad() < habilidadMinimaProfugo) {//Si el nivel de habilidad del profugo es menor que el obtenido antes, lo actualizamos
+					habilidadMinimaProfugo = p.getNivelHabilidad();
+				}
 			}
 		}
+		
+		Integer experienciaGanada = 2 * profugosCapturados.size();
+		if(huboIntimidados) {//Si hay intimidados, lo sumamos, por si no llega a haber intimidados
+			experienciaGanada += habilidadMinimaProfugo;
+		}
+		
+		this.experiencia += experienciaGanada;
+		
 		return profugosCapturados;
 	}
 }

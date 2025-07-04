@@ -24,6 +24,10 @@ public abstract class Cazador {
 	public Zona getZona() {
 		return zona;
 	}
+	
+	public Integer getExperiencia() {
+		return this.experiencia;
+	}
 
 	public abstract Boolean intentarCaptura(Profugo p);// Crea la clase abstracta intentar captura, para ser
 														// sobreescrita en cada cazador
@@ -33,13 +37,6 @@ public abstract class Cazador {
 		
 	public Integer cantidadDeProfugosCapturados() {
 		return this.capturados.size();
-	}
-	@Override
-	public String toString() {
-	    return "Cazador: " + this.nombre + 
-	           " | Experiencia: " + this.experiencia +
-	           " | Zona asignada: " + (this.zona != null ? zona.getNombre() : "Ninguna") +
-	           " | Capturas: " + this.capturados.size();
 	}
 
 	@Override
