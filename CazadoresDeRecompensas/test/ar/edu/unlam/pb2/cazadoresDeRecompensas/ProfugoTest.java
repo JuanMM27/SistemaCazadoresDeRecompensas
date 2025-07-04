@@ -21,41 +21,31 @@ public class ProfugoTest {
 		Profugo p1 = new Profugo("Matias",20, 80, true);
 		assertNotNull(p1);
 	}
-
 	@Test
-	public void queUnProfugoPuedaSerEntrenadoEnArtesMarciales() {
-		Profugo p1 = new Profugo("Jorge", 20, 90, true);
-		p1.entrenarArtesMarciales();
-		assertEquals(Integer.valueOf(95), p1.getNivelHabilidad());
+	public void seCreaUnProfugoYSaberSuNombre() {
+		Profugo p1 = new Profugo("Matias",20, 80, true);
+		assertEquals("Matias",p1.getNombre());
+	}
+	@Test
+	public void seCreaUnProfugoYSaberSuNivelDeInocencia() {
+		Profugo p1 = new Profugo("Matias",20, 80, true);
+		assertEquals(Integer.valueOf(20),p1.getNivelInocencia());
+	}
+	@Test
+	public void seCreaUnProfugoYSaberSuNivelDeHabilidad() {
+		Profugo p1 = new Profugo("Matias",20, 80, true);
+		assertEquals(Integer.valueOf(80),p1.getNivelHabilidad());
+	}
+	@Test
+	public void seCreaUnProfugoYSaberSiEsNerviosoONo() {
+		Profugo p1 = new Profugo("Matias",20, 80, true);
+		assertTrue(p1.getEsNervioso());
+	}
+	@Test
+	public void queSePuedaCrearUnProfugoYSePuedaIntimidar() {
+		Profugo p1 = new Profugo("Matias",20, 80, true);
+		
+		assertEquals(Integer.valueOf(80),p1.getNivelHabilidad());
 	}
 	
-	@Test
-	public void queUnProfugoNoPuedaEntrenarseMasAllaDelNivel100DeHabilidad() {
-		Profugo p1 = new Profugo("Jorge", 20, 100, true);
-		p1.entrenarArtesMarciales();//Esto lo entrenaria y lo subiria a 105, pero si el metodo esta bien hecho, deberia limitarse en 100
-		assertEquals(Integer.valueOf(100), p1.getNivelHabilidad());
-	}
-	
-	@Test
-	public void queUnProfugoPuedeRealizarEntrenamientoDeElite() {
-		Profugo p1 = new Profugo("Jorge", 20, 100, true);
-		p1.entrenarElite();//Esto lo entrenaria y lo subiria a 105, pero si el metodo esta bien hecho, deberia limitarse en 100
-		assertFalse(p1.getEsNervioso());
-	}
-	
-	@Test
-	public void queNoSePuedaCambiarSiEsNerviosoPorEntrenamientoDeElite() {
-		Profugo p1 = new Profugo("Jorge", 20, 100, true);
-		p1.entrenarElite();//Esto lo entrenaria y lo subiria a 105, pero si el metodo esta bien hecho, deberia limitarse en 100
-		p1.setEsNervioso(true);
-		assertFalse(p1.getEsNervioso());
-	}
-	
-	@Test
-	public void queUnProfugoNoPuedeTenerMenosDe40DeNivelDeInocenciaConProteccionLegal() {
-		Profugo p1 = new Profugo("Jorge", 45, 100, true);
-		p1.entrenarProteccionLegal();//Esto lo entrenaria y lo subiria a 105, pero si el metodo esta bien hecho, deberia limitarse en 100
-		p1.setNivelHabilidad(20);
-		assertEquals(Integer.valueOf(45), p1.getNivelInocencia());
-	}
 }

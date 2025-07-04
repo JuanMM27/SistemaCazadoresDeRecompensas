@@ -45,7 +45,7 @@ public class ZonaTest {
 	@Test(expected = ObjetoNoEncontradoException.class)
 	public void queancaUnaExcepcionSiElProfugoNoEstaEnaLaZona() {		
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);		
-		assertEquals(profugo1, zona.buscarProfugo(profugo1));
+		zona.buscarProfugo(profugo1);
 		
 	}
 	@Test
