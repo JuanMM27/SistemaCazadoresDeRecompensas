@@ -32,13 +32,13 @@ public class CazadoresTest {
 	}
 
 	@Test
-	public void crearUnCazadorSigilosoQueIntentaCapturarUnProfugoConHabildadMayorACincuenta() {
+	public void crearUnCazadorSigilosoQueIntentaCapturarUnProfugoConHabildadMayorACincuentaYNoLoLogra() {
 		Profugo p1 = new Profugo("Pablo", 10, 60, false);
 		CazadorSigiloso cazador = new CazadorSigiloso("Juanjo", 80);
 		Zona zona = new Zona("Chascomus");
 		zona.agregarProfugo(p1);
 		cazador.asignarZona(zona);
-		assertTrue(cazador.intentarCaptura(p1));
+		assertFalse(cazador.intentarCaptura(p1));
 	}
 
 	@Test
@@ -105,6 +105,17 @@ public class CazadoresTest {
 		cazadorUrbano.intentarCaptura(p1);
 		assertFalse(profugo.getEsNervioso());
 		assertEquals(Integer.valueOf(8), profugo.getNivelInocencia());
+	}
+	
+	@Test
+	public void queElCazadorSeSumeExperienciaPorCazadosEIntimidados() {
+		CazadorUrbano cazadorUrbano = new CazadorUrbano("Jose", 60);
+		Zona zona = new Zona("San justo");
+		agregarProfugosALaZona(zona);
+		cazadorUrbano.asignarZona(zona);
+		cazadorUrbano.intentarCapturaEnZonaAsignada(zona);
+		//82 por los 60 de experiencia base + 22 de subida de exp
+		assertEquals(82, cazadorUrbano.getExperiencia(), 0.0);
 	}
 
 	@Test(expected = ObjetoNoEncontradoException.class)
