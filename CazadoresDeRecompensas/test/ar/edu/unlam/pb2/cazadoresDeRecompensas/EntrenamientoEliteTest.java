@@ -19,5 +19,14 @@ public class EntrenamientoEliteTest {
 		p1.setEsNervioso(true);
 		assertFalse(p1.getEsNervioso());
 	}
-
+	@Test
+	public void queNoSePuedaSerCapturadoPorUnCazadorUrbanoCambiarSiEsNerviosoPorEntrenamientoDeElite() {
+		Profugo p1 = new Profugo("Jorge", 48, 48, false);
+		Cazador c1=new CazadorRural("Carlos",80);
+		Zona zona=new Zona("San justo");
+		zona.agregarProfugo(p1);
+		p1.entrenarElite();
+		assertFalse(c1.intentarCaptura(p1));		
+		assertFalse(p1.getEsNervioso());
+	}
 }
