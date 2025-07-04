@@ -36,7 +36,7 @@ public class EntrenamientoArtesMarcialesTest {
 		zona.agregarProfugo(p1);
 		p1.entrenarArtesMarciales();
 		assertFalse(c1.intentarCaptura(p1));
-		assertEquals(Integer.valueOf(48),p1.getNivelHabilidad());
+		assertEquals(Integer.valueOf(46),p1.getNivelInocencia());
 	}
 	
 
