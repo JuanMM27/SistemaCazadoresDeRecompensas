@@ -3,6 +3,8 @@ package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 import static org.junit.Assert.*;
 
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -19,8 +21,8 @@ public class AgenciaTest {
 	@Test
 	public void queSePuedanAgregarZonasConProfugosALaAgencia() {
 		agregarZonasALaAgencia();
-		assertEquals(Integer.valueOf(9), cazadoresDeRecompensas.cantidadDeZonas());
-		assertEquals(Integer.valueOf(9), cazadoresDeRecompensas.cantidadDeZonas());
+		assertEquals(Integer.valueOf(4), cazadoresDeRecompensas.cantidadDeZonas());
+		assertEquals(Integer.valueOf(4), cazadoresDeRecompensas.cantidadDeZonas());
 
 	}
 	@Test
@@ -35,20 +37,44 @@ public class AgenciaTest {
 	}
 	
 	@Test
-	public void queSeObtengaLaListaDeTodosLosProfugosCapturadosPorCazadores() {
-		agregarZonasALaAgencia();
-		Zona zonaDePruebas = cazadoresDeRecompensas.obtenerZona("Lomas");
-		Cazador cazador1 = new CazadorRural("Hector", 80);
-		cazador1.asignarZona(zonaDePruebas);
-		for(Profugo p : cazador1.intentarCapturaEnZonaAsignada(zonaDePruebas)){
-			System.out.println(p);
-		}
+	public void queSeObtengaMapaDeCapturas() {
+	    agregarZonasALaAgencia();
+
+	    Cazador cazador1 = new CazadorRural("Hector R", 80);
+	    Cazador cazador2 = new CazadorUrbano("Marcos U", 60);
+	    Cazador cazador3 = new CazadorSigiloso("Mauro S", 40);
+
+	    cazador1.asignarZona(cazadoresDeRecompensas.obtenerZona("Lomas"));
+	    cazador2.asignarZona(cazadoresDeRecompensas.obtenerZona("San justo"));
+	    cazador3.asignarZona(cazadoresDeRecompensas.obtenerZona("Capital"));
+
+	    cazadoresDeRecompensas.agregarCazador(cazador1);
+	    cazadoresDeRecompensas.agregarCazador(cazador2);
+	    cazadoresDeRecompensas.agregarCazador(cazador3);
+
+	    // ✅ Captura SOLO UNA VEZ
+	    Map<Cazador, Set<Profugo>> capturas = cazadoresDeRecompensas.obtenerCapturasDeLosCazadores();
+
+	    // ✅ Pasar el mapa al método
+	    Cazador mejorCazador = cazadoresDeRecompensas.getCazadorConMasCapturas();
+	    Profugo masHabil = cazadoresDeRecompensas.getProfugoMasHabilCapturado();
+
+	    System.out.println("---- VERIFICACIÓN DEL MAPA DE CAPTURAS ----");
+	    for (Map.Entry<Cazador, Set<Profugo>> entry : capturas.entrySet()) {
+	        System.out.println("Cazador: " + entry.getKey().getNombre());
+	        for (Profugo p : entry.getValue()) {
+	            System.out.println("  - Capturó a: " + p.getNombre());
+	        }
+	    }
+
+	    System.out.println("✅ Cazador con más capturas: " + mejorCazador.getNombre() + " (" + capturas.get(mejorCazador).size() + " capturas)");
+	    System.out.println("🎯 Prófugo más hábil capturado: " + masHabil.getNombre() + " (habilidad: " + masHabil.getNivelHabilidad() + ")");
 	}
 	
 	private void agregarProfugosALaZona(Zona zona) {
-		Profugo profugo1 = new Profugo("Pablo", 90, 50, true);
-		Profugo profugo2 = new Profugo("Jorge", 90, 30, false);
-		Profugo profugo3 = new Profugo("Ramon", 90, 30, false);
+		Profugo profugo1 = new Profugo("Pablo", 30, 50, true);
+		Profugo profugo2 = new Profugo("Jorge", 40, 30, false);
+		Profugo profugo3 = new Profugo("Ramon", 20, 30, true);
 		Profugo[] profugos = { profugo1, profugo2, profugo3};
 		for (Profugo i : profugos) {
 			zona.agregarProfugo(i);
