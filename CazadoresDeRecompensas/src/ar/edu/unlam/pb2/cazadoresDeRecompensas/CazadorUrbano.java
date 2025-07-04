@@ -36,7 +36,7 @@ public class CazadorUrbano extends Cazador {
 	@Override
 	public Set<Profugo> intentarCapturaEnZonaAsignada(Zona zona) {
 		Set <Profugo> profugosCapturados = new HashSet<>();
-		HashSet<Profugo> profugoEnLaZona=new HashSet<Profugo>(zona.getProfugos());
+		HashSet<Profugo> profugoEnLaZona=new HashSet<>(this.zona.getProfugos());
 		for (Profugo p : profugoEnLaZona) {
 			if(intentarCaptura(p)) {
 				profugosCapturados.add(p);
