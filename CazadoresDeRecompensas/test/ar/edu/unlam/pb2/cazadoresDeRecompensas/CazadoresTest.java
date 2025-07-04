@@ -2,6 +2,7 @@ package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 
 import static org.junit.Assert.*;
 
+import java.util.HashSet;
 
 import org.junit.Test;
 
@@ -24,16 +25,31 @@ public class CazadoresTest {
 	}
 
 	@Test
-	public void queAlCazadorNoSeLePuedaAsignarUnaZonaVacia() {
+	public void queAlCazadorUrbanoNoSeLePuedaAsignarUnaZonaVacia() {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Jose", 40);
 		Zona zona = new Zona("San justo");
 		assertFalse(cazadorUrbano.asignarZona(zona));
 
 	}
+	@Test
+	public void queAlCazadorSigilosoNoSeLePuedaAsignarUnaZonaVacia() {
+		CazadorSigiloso cazador = new CazadorSigiloso("Juanjo", 80);
+		Zona zona = new Zona("San justo");
+		assertFalse(cazador.asignarZona(zona));
+
+	}
+	@Test
+	public void queAlCazadorRuralNoSeLePuedaAsignarUnaZonaVacia() {
+		CazadorRural cazador = new CazadorRural("Marco", 50);
+		Zona zona = new Zona("San justo");
+		assertFalse(cazador.asignarZona(zona));
+
+	}
+	
 
 	@Test
 	public void crearUnCazadorSigilosoQueIntentaCapturarUnProfugoConHabildadMayorACincuenta() {
-		Profugo p1 = new Profugo("Pablo", 10, 60, false);
+		Profugo p1 = new Profugo("Pablo", 10, 40, false);
 		CazadorSigiloso cazador = new CazadorSigiloso("Juanjo", 80);
 		Zona zona = new Zona("Chascomus");
 		zona.agregarProfugo(p1);
@@ -106,6 +122,44 @@ public class CazadoresTest {
 		assertFalse(profugo.getEsNervioso());
 		assertEquals(Integer.valueOf(8), profugo.getNivelInocencia());
 	}
+	@Test
+	public void queSePuedaVerLaCantidadDeProfugosCapturadosEnUnaZonaPorUnCazdorSigiloso() {
+		CazadorSigiloso cazador = new CazadorSigiloso("Juanjo", 80);
+		Zona zona = new Zona("San justo");
+		agregarProfugosALaZonaPrueba(zona);
+		cazador.asignarZona(zona);
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
+		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
+		Profugo profugo3 = new Profugo("Ramon", 60, 60, false);
+		Profugo profugo4 = new Profugo("Leo", 60, 30, true);
+		HashSet<Profugo> esperado=new HashSet<Profugo>();
+		// los devuelve ordenados por nombre
+		esperado.add(profugo4);
+		esperado.add(profugo1);
+		esperado.add(profugo2);		
+		assertEquals(esperado, cazador.intentarCapturaEnZonaAsignada(zona));
+		
+		
+	}
+	@Test
+	public void queSePuedaVerLaCantidadDeProfugosCapturadosEnUnaZonaPorUnCazdorUrbano() {
+		CazadorUrbano cazadorUrbano = new CazadorUrbano("Jose", 80);
+		Zona zona = new Zona("San justo");
+		agregarProfugosALaZonaPrueba2(zona);
+		cazadorUrbano.asignarZona(zona);
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, false);
+		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
+		Profugo profugo3 = new Profugo("Ramon", 60, 60, true);
+		Profugo profugo4 = new Profugo("Leo", 60, 30, false);
+		HashSet<Profugo> esperado=new HashSet<Profugo>();
+		// los devuelve ordenados por nombre
+		esperado.add(profugo4);
+		esperado.add(profugo1);
+		esperado.add(profugo2);		
+		assertEquals(esperado, cazadorUrbano.intentarCapturaEnZonaAsignada(zona));
+		
+		
+	}
 
 	@Test(expected = ObjetoNoEncontradoException.class)
 	public void queElProfugoBuscadoSeaNuloYLanceUnaExcepcion() {
@@ -152,4 +206,28 @@ public class CazadoresTest {
 		}
 
 	}
+	private void agregarProfugosALaZonaPrueba(Zona zona) {
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
+		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
+		Profugo profugo3 = new Profugo("Ramon", 60, 60, false);
+		Profugo profugo4 = new Profugo("Leo", 60, 30, true);
+		
+		Profugo[] profugos = { profugo1, profugo2, profugo3, profugo4};
+		for (Profugo i : profugos) {
+			zona.agregarProfugo(i);
+		}
+
+	}
+	private void agregarProfugosALaZonaPrueba2(Zona zona) {
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, false);
+		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
+		Profugo profugo3 = new Profugo("Ramon", 60, 60, true);
+		Profugo profugo4 = new Profugo("Leo", 60, 30, false);		
+		Profugo[] profugos = { profugo1, profugo2, profugo3, profugo4};
+		for (Profugo i : profugos) {
+			zona.agregarProfugo(i);
+		}
+
+	}
+	
 }

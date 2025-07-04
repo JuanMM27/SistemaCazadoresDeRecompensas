@@ -11,6 +11,12 @@ public class AgenciaTest {
 	public Agencia cazadoresDeRecompensas = new Agencia();
 
 	@Test
+	public void queSePuedaAgregarUnCazadorALaAgencia() {
+		Cazador cazador1 = new CazadorUrbano("Carlos", 60);
+		assertEquals(cazador1.getNombre(),"Carlos");
+		assertTrue(cazadoresDeRecompensas.agregarCazador(cazador1));
+	}
+	@Test
 	public void queSePuedaCrearUnaAgenciaYSePuedanAgregarCazadores() {
 		agregarCazadoresALaZona();
 		assertEquals(Integer.valueOf(6), cazadoresDeRecompensas.cantidadDeCazadores());
@@ -19,19 +25,35 @@ public class AgenciaTest {
 	@Test
 	public void queSePuedanAgregarZonasConProfugosALaAgencia() {
 		agregarZonasALaAgencia();
-		assertEquals(Integer.valueOf(9), cazadoresDeRecompensas.cantidadDeZonas());
-		assertEquals(Integer.valueOf(9), cazadoresDeRecompensas.cantidadDeZonas());
+		assertEquals(Integer.valueOf(4), cazadoresDeRecompensas.cantidadDeZonas());
+		assertEquals(Integer.valueOf(4), cazadoresDeRecompensas.cantidadDeZonas());
 
 	}
 	@Test
 	public void queSePuedaConsultarCuantosProfugosHayPorZona() {
 		agregarZonasALaAgencia();
 		Zona zona=cazadoresDeRecompensas.obtenerZona("San justo");
-		HashSet<Profugo> esperado = arrayDeProfugosParaprueba();		
+		HashSet <Profugo> esperado=new HashSet <Profugo>();
+		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
+		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
+		Profugo profugo3 = new Profugo("Ramon", 40, 40, false);
+		esperado.add(profugo1);
+		esperado.add(profugo2);
+		esperado.add(profugo3);		
 		HashSet <Profugo> obtenido=cazadoresDeRecompensas.profugosPorZona(zona);
-		assertEquals(obtenido, esperado);
-		
+		assertEquals(obtenido, esperado);	
 
+	}
+	@Test(expected = ObjetoNoEncontradoException.class)
+	public void queoSePuedaAsignarUnaZonaVacia() {
+		Zona zona1 = new Zona("San justo");
+		assertEquals(zona1.getProfugos(),cazadoresDeRecompensas.profugosPorZona(zona1));
+	}
+	@Test(expected = ObjetoNoEncontradoException.class)
+	public void queLanceUnaExcepcionSiNoEncuentraLaZona() {
+		Zona zona1 = new Zona("San justo");
+		agregarZonasALaAgencia();
+		cazadoresDeRecompensas.obtenerZona("Matederos");
 	}
 	
 	@Test
@@ -56,17 +78,7 @@ public class AgenciaTest {
 
 	}
 
-	private HashSet<Profugo> arrayDeProfugosParaprueba() {
-		HashSet <Profugo> esperado=new HashSet <Profugo>();
-		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
-		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
-		Profugo profugo3 = new Profugo("Ramon", 40, 40, false);
-		esperado.add(profugo1);
-		esperado.add(profugo2);
-		esperado.add(profugo3);
-		
-		return esperado;
-	}
+
 	
 	private void agregarCazadoresALaZona() {
 		Cazador cazador1 = new CazadorUrbano("Carlos", 60);

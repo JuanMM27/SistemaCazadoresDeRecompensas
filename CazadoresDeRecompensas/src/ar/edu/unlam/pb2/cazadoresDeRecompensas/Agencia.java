@@ -10,8 +10,8 @@ public class Agencia {
 	private Set<Cazador> cazadores = new HashSet<Cazador>();
 	private Map<Zona, Set<Profugo>> zonas = new HashMap<Zona, Set<Profugo>>();
 
-	public void agregarCazador(Cazador cazador1) {
-		this.cazadores.add(cazador1);
+	public Boolean agregarCazador(Cazador cazador1) {		
+			return this.cazadores.add(cazador1);	
 
 	}
 
@@ -19,6 +19,7 @@ public class Agencia {
 		return this.cazadores.size();
 	}
 	public void agregarZona(Zona zona) {
+		if(!zona.getProfugos().isEmpty())
 		this.zonas.put(zona, zona.getProfugos());
 
 	}
@@ -27,11 +28,10 @@ public class Agencia {
 	}
 
 	public HashSet<Profugo> profugosPorZona(Zona zona) {
-		HashSet<Profugo> consulta = null;
 		if (zonas.containsKey(zona)) {
-			consulta = zona.getProfugos();
+			return zona.getProfugos();			
 		}
-		return consulta;
+		throw new ObjetoNoEncontradoException("No existe el objeto");
 	}
 
 	public Zona obtenerZona(String nombre) {
@@ -44,11 +44,11 @@ public class Agencia {
 
 	}
 	//Metodo para obtener un map con las capturas hechas por cada cazador
-	public Map<Cazador, Set<Profugo>> obtenerCapturasDeLosCazadores(){
-		Map<Cazador, Set<Profugo>> capturas = new HashMap<>();
+	//public Map<Cazador, Set<Profugo>> obtenerCapturasDeLosCazadores(){
+		//Map<Cazador, Set<Profugo>> capturas = new HashMap<>();
 		
-		for(Cazador cazador : cazadores) {
-			Zona zona = cazador.g
-		}
-	}
+		//for(Cazador cazador : cazadores) {
+		
+		//}
+	
 }
