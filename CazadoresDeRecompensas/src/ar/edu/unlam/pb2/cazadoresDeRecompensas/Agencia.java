@@ -48,7 +48,7 @@ public class Agencia {
 		Map<Cazador, Set<Profugo>> capturas = new HashMap<>();
 		
 		for(Cazador cazador : cazadores) {
-			
+			Zona zona = cazador.g
 		}
 	}
 }
