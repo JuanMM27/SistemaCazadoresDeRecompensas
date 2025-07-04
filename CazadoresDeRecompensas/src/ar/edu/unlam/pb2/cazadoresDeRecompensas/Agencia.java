@@ -18,12 +18,10 @@ public class Agencia {
 	public Integer cantidadDeCazadores() {
 		return this.cazadores.size();
 	}
-
 	public void agregarZona(Zona zona) {
 		this.zonas.put(zona, zona.getProfugos());
 
 	}
-
 	public Integer cantidadDeZonas() {
 		return this.zonas.size();
 	}
@@ -45,6 +43,12 @@ public class Agencia {
 		throw new ObjetoNoEncontradoException("No existe el objeto");
 
 	}
-
-
+	//Metodo para obtener un map con las capturas hechas por cada cazador
+	public Map<Cazador, Set<Profugo>> obtenerCapturasDeLosCazadores(){
+		Map<Cazador, Set<Profugo>> capturas = new HashMap<>();
+		
+		for(Cazador cazador : cazadores) {
+			
+		}
+	}
 }
