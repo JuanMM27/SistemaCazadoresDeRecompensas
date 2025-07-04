@@ -59,8 +59,9 @@ public class Profugo {
 	public void inocenciaIntimada(Integer descuento) {
 		if(this.nivelInocencia<descuento) {
 			this.nivelInocencia=0;
-		}else
+		}else {
 		this.nivelInocencia-=descuento;
+		}
 		
 	}
 	@Override
