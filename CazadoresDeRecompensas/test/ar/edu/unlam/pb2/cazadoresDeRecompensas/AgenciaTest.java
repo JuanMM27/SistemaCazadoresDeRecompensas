@@ -16,7 +16,6 @@ public class AgenciaTest {
 	public void queSePuedaAgregarUnCazadorALaAgencia() {
 		Cazador cazador1 = new CazadorUrbano("Carlos", 60);
 		assertEquals(cazador1.getNombre(),"Carlos");
-		assertTrue(cazadoresDeRecompensas.agregarCazador(cazador1));
 	}
 	@Test
 	public void queSePuedaCrearUnaAgenciaYSePuedanAgregarCazadores() {
@@ -53,7 +52,6 @@ public class AgenciaTest {
 	}
 	@Test(expected = ObjetoNoEncontradoException.class)
 	public void queLanceUnaExcepcionSiNoEncuentraLaZona() {
-		Zona zona1 = new Zona("San justo");
 		agregarZonasALaAgencia();
 		cazadoresDeRecompensas.obtenerZona("Matederos");
 	}

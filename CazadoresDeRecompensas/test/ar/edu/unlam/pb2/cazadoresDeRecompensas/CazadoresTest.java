@@ -134,6 +134,7 @@ public class CazadoresTest {
 		cazadorUrbano.intentarCapturaEnZonaAsignada(zona);
 		//82 por los 60 de experiencia base + 22 de subida de exp
 		assertEquals(82, cazadorUrbano.getExperiencia(), 0.0);
+	}
 
 	@Test
 	public void queSePuedaVerLaCantidadDeProfugosCapturadosEnUnaZonaPorUnCazdorSigiloso() {
@@ -143,7 +144,6 @@ public class CazadoresTest {
 		cazador.asignarZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, true);
 		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
-		Profugo profugo3 = new Profugo("Ramon", 60, 60, false);
 		Profugo profugo4 = new Profugo("Leo", 60, 30, true);
 		HashSet<Profugo> esperado=new HashSet<Profugo>();
 		// los devuelve ordenados por nombre
@@ -162,7 +162,6 @@ public class CazadoresTest {
 		cazadorUrbano.asignarZona(zona);
 		Profugo profugo1 = new Profugo("Pablo", 10, 10, false);
 		Profugo profugo2 = new Profugo("Jorge", 50, 30, false);
-		Profugo profugo3 = new Profugo("Ramon", 60, 60, true);
 		Profugo profugo4 = new Profugo("Leo", 60, 30, false);
 		HashSet<Profugo> esperado=new HashSet<Profugo>();
 		// los devuelve ordenados por nombre

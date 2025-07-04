@@ -1,6 +1,5 @@
 package ar.edu.unlam.pb2.cazadoresDeRecompensas;
 
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -32,6 +31,8 @@ public class Agencia {
 		HashSet<Profugo> consulta = null;
 		if (zonas.containsKey(zona)) {
 			consulta = zona.getProfugos();
+		}else {
+			throw new ObjetoNoEncontradoException("Zona no encontrada");
 		}
 		return consulta;
 	}
@@ -82,4 +83,5 @@ public class Agencia {
 	        }
 	    }
 	    return masHabil;
-  }
+	}
+}
