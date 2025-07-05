@@ -64,4 +64,14 @@ public class CazadorRuralTest {
 		c.asignarZona(z);
 		assertTrue(c.intentarCapturaEnZonaAsignada(z).contains(p)); // Lo captura sin problema
 	}
+	@Test
+	public void elCazadorIntimidaPeroNoBajaPorLaProteccionLegal() {
+		Profugo profugo1 = new Profugo("Pablo", 40, 40, true);
+		Cazador cazadorRural = new CazadorRural("Jorge", 20);
+		Zona zona = new Zona("Brasil");
+		profugo1.entrenarProteccionLegal();
+		zona.agregarProfugo(profugo1);
+		cazadorRural.asignarZona(zona);
+		assertEquals(40, profugo1.getNivelHabilidad(), 0.0);//Se mantiene en 40 porque tiene proteccion legal
+	}
 }

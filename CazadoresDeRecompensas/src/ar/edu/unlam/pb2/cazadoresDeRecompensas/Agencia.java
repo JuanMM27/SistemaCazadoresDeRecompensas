@@ -64,12 +64,15 @@ public class Agencia {
 
 	public Cazador getCazadorConMasCapturas() {
 	    Cazador mejor = null;
-	    int max = 0;
+	    Integer max = 0;
 	    for (Map.Entry<Cazador, Set<Profugo>> entry : mapaDeCapturas.entrySet()) {
 	        if (entry.getValue().size() > max) {
 	            max = entry.getValue().size();
 	            mejor = entry.getKey();
 	        }
+	    }
+	    if (mejor == null) {
+	        throw new NoSeRealizaronCapturasException("No se realizaron capturas. No hay cazador con mas capturas");
 	    }
 	    return mejor;
 	}
@@ -81,6 +84,9 @@ public class Agencia {
 	                masHabil = p;
 	            }
 	        }
+	    }
+	    if (masHabil == null) {
+	        throw new NoSeRealizaronCapturasException("No se realizaron capturas. No hay profugo mas habil");
 	    }
 	    return masHabil;
 	}
